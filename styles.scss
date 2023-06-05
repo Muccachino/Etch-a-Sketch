@@ -2,3 +2,40 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  display: grid;
+  justify-items: center;
+  #page-heading {
+    padding: 30px;
+  }
+  #settings {
+    display: flex;
+    flex-direction: row;
+    #red {
+      height: 30px;
+      width: 30px;
+      margin-right: 20px;
+      background-color: red;
+    }
+    #green {
+      height: 30px;
+      width: 30px;
+      margin-right: 20px;
+      background-color: green;
+    }
+    #randomColor {
+      height: 30px;
+      width: 30px;
+      margin-right: 20px;
+      background: linear-gradient(
+        rgb(243, 211, 107),
+        rgb(31, 28, 248),
+        rgb(248, 28, 149)
+      );
+    }
+    #reset {
+      height: 30px;
+      margin-bottom: 20px;
+    }
+  }
+}
