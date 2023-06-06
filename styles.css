@@ -21,21 +21,31 @@ body #settings {
           flex-direction: row;
 }
 body #settings #red {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   margin-right: 20px;
+  border-radius: 10000px;
   background-color: red;
 }
 body #settings #green {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   margin-right: 20px;
+  border-radius: 10000px;
   background-color: green;
 }
-body #settings #randomColor {
-  height: 30px;
-  width: 30px;
+body #settings #blue {
+  height: 40px;
+  width: 40px;
   margin-right: 20px;
+  border-radius: 10000px;
+  background-color: blue;
+}
+body #settings #randomColor {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+  border-radius: 10000px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 211, 107)), color-stop(rgb(31, 28, 248)), to(rgb(248, 28, 149)));
   background: linear-gradient(rgb(243, 211, 107), rgb(31, 28, 248), rgb(248, 28, 149));
 }

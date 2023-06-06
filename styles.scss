@@ -12,21 +12,31 @@ body {
     display: flex;
     flex-direction: row;
     #red {
-      height: 30px;
-      width: 30px;
+      height: 40px;
+      width: 40px;
       margin-right: 20px;
+      border-radius: 10000px;
       background-color: red;
     }
     #green {
-      height: 30px;
-      width: 30px;
+      height: 40px;
+      width: 40px;
       margin-right: 20px;
+      border-radius: 10000px;
       background-color: green;
     }
-    #randomColor {
-      height: 30px;
-      width: 30px;
+    #blue {
+      height: 40px;
+      width: 40px;
       margin-right: 20px;
+      border-radius: 10000px;
+      background-color: blue;
+    }
+    #randomColor {
+      height: 40px;
+      width: 40px;
+      margin-right: 20px;
+      border-radius: 10000px;
       background: linear-gradient(
         rgb(243, 211, 107),
         rgb(31, 28, 248),
