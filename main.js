@@ -23,40 +23,48 @@ const boxCreator = (choice) => {
 const colorChange = (color) => {
   const allMinibox = document.querySelectorAll(".minibox");
   if (color === "red") {
+    hideOwnColor();
     redButton.style.border = "3px solid black";
     greenButton.style.border = "none";
     blueButton.style.border = "none";
     randomButton.style.border = "none";
+    ownColorButton.style.border = "none";
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
         box.style.backgroundColor = "red";
       });
     });
   } else if (color === "green") {
+    hideOwnColor();
     redButton.style.border = "none";
     greenButton.style.border = "3px solid black";
     blueButton.style.border = "none";
     randomButton.style.border = "none";
+    ownColorButton.style.border = "none";
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
         box.style.backgroundColor = "green";
       });
     });
   } else if (color === "blue") {
+    hideOwnColor();
     redButton.style.border = "none";
     greenButton.style.border = "none";
     blueButton.style.border = "3px solid black";
     randomButton.style.border = "none";
+    ownColorButton.style.border = "none";
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
         box.style.backgroundColor = "blue";
       });
     });
   } else if (color === "random") {
+    hideOwnColor();
     redButton.style.border = "none";
     greenButton.style.border = "none";
     blueButton.style.border = "none";
     randomButton.style.border = "3px solid black";
+    ownColorButton.style.border = "none";
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
         box.style.backgroundColor =
@@ -69,13 +77,35 @@ const colorChange = (color) => {
           ")";
       });
     });
+  } else if (color === "ownColor") {
+    redButton.style.border = "none";
+    greenButton.style.border = "none";
+    blueButton.style.border = "none";
+    randomButton.style.border = "none";
+    ownColorButton.style.border = "3px solid black";
+    allMinibox.forEach((box) => {
+      box.addEventListener("mouseover", () => {
+        box.style.backgroundColor =
+          "rgb(" +
+          ownRed.value +
+          "," +
+          ownBlue.value +
+          "," +
+          ownGreen.value +
+          ")";
+      });
+    });
   }
 };
 
 const reset = () => {
+  hideOwnColor();
   redButton.style.border = "none";
   greenButton.style.border = "none";
+  blueButton.style.border = "none";
   randomButton.style.border = "none";
+  ownColorButton.style.border = "none";
+
   let choice = 0;
   choice = parseInt(prompt("How many colums and rows do you want? (1 - 100)"));
   while (choice > 100 || choice < 1) {
@@ -86,14 +116,31 @@ const reset = () => {
   boxCreator(choice);
 };
 
+const toggleOwnColor = () => {
+  ownRed.classList.toggle("hide");
+  ownBlue.classList.toggle("hide");
+  ownGreen.classList.toggle("hide");
+};
+const hideOwnColor = () => {
+  ownRed.classList.add("hide");
+  ownBlue.classList.add("hide");
+  ownGreen.classList.add("hide");
+};
+
 const resetButton = document.querySelector("#reset");
 const redButton = document.querySelector("#red");
 const greenButton = document.querySelector("#green");
 const blueButton = document.querySelector("#blue");
 const randomButton = document.querySelector("#randomColor");
+const ownColorButton = document.querySelector("#ownColor");
+const ownRed = document.querySelector("#ownRed");
+const ownGreen = document.querySelector("#ownGreen");
+const ownBlue = document.querySelector("#ownBlue");
 
 resetButton.addEventListener("click", reset);
 redButton.addEventListener("click", colorChange.bind(null, "red"));
 greenButton.addEventListener("click", colorChange.bind(null, "green"));
 blueButton.addEventListener("click", colorChange.bind(null, "blue"));
 randomButton.addEventListener("click", colorChange.bind(null, "random"));
+ownColorButton.addEventListener("click", colorChange.bind(null, "ownColor"));
+ownColorButton.addEventListener("click", toggleOwnColor);

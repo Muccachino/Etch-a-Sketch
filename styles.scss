@@ -43,9 +43,30 @@ body {
         rgb(248, 28, 149)
       );
     }
+    #ownColor {
+      height: 40px;
+      width: 40px;
+      margin-right: 20px;
+      border-radius: 10000px;
+      background: linear-gradient(
+        rgb(236, 81, 9),
+        rgb(62, 192, 1),
+        rgb(17, 1, 10)
+      );
+    }
     #reset {
       height: 30px;
       margin-bottom: 20px;
     }
+  }
+  input[type="number"] {
+    width: 25vw;
+    height: 30px;
+  }
+  #ownBlue {
+    margin-bottom: 20px;
+  }
+  .hide {
+    display: none;
   }
 }

@@ -49,7 +49,25 @@ body #settings #randomColor {
   background: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 211, 107)), color-stop(rgb(31, 28, 248)), to(rgb(248, 28, 149)));
   background: linear-gradient(rgb(243, 211, 107), rgb(31, 28, 248), rgb(248, 28, 149));
 }
+body #settings #ownColor {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+  border-radius: 10000px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(236, 81, 9)), color-stop(rgb(62, 192, 1)), to(rgb(17, 1, 10)));
+  background: linear-gradient(rgb(236, 81, 9), rgb(62, 192, 1), rgb(17, 1, 10));
+}
 body #settings #reset {
   height: 30px;
   margin-bottom: 20px;
+}
+body input[type=number] {
+  width: 25vw;
+  height: 30px;
+}
+body #ownBlue {
+  margin-bottom: 20px;
+}
+body .hide {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */
