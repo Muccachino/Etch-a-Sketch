@@ -1,14 +1,16 @@
 "use strict";
 
 const mainBox = document.querySelector("#drawpad");
-mainBox.style.width = "700px";
+mainBox.style.width = "700px"; //size of the drawpad should match the number in the boxCreator
 
+/* creates the draw grid */
 const gridCreator = (choice) => {
   mainBox.style.display = "grid";
   mainBox.style.gridTemplateColumns = "repeat(" + choice + ", 1fr)";
   mainBox.style.gridTemplateRows = "repeat(" + choice + ", 1fr)";
 };
 
+/* creates the seperate boxes inside the grid */
 const boxCreator = (choice) => {
   for (let i = 0; i < choice * choice; i++) {
     let minibox = document.createElement("div");
@@ -20,27 +22,21 @@ const boxCreator = (choice) => {
   }
 };
 
+/* drawing color depending which color button was clicked */
 const colorChange = (color) => {
   const allMinibox = document.querySelectorAll(".minibox");
   if (color === "red") {
-    hideOwnColor();
-    redButton.style.border = "3px solid black";
-    greenButton.style.border = "none";
-    blueButton.style.border = "none";
-    randomButton.style.border = "none";
-    ownColorButton.style.border = "none";
+    hideOwnColor(); //hides the input areas of the "own color" section if they are open
+    borderChange(color); //highlights the chosen color
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
+        //adds the mouseover event for each box created before
         box.style.backgroundColor = "red";
       });
     });
   } else if (color === "green") {
     hideOwnColor();
-    redButton.style.border = "none";
-    greenButton.style.border = "3px solid black";
-    blueButton.style.border = "none";
-    randomButton.style.border = "none";
-    ownColorButton.style.border = "none";
+    borderChange(color);
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
         box.style.backgroundColor = "green";
@@ -48,11 +44,7 @@ const colorChange = (color) => {
     });
   } else if (color === "blue") {
     hideOwnColor();
-    redButton.style.border = "none";
-    greenButton.style.border = "none";
-    blueButton.style.border = "3px solid black";
-    randomButton.style.border = "none";
-    ownColorButton.style.border = "none";
+    borderChange(color);
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
         box.style.backgroundColor = "blue";
@@ -60,13 +52,10 @@ const colorChange = (color) => {
     });
   } else if (color === "random") {
     hideOwnColor();
-    redButton.style.border = "none";
-    greenButton.style.border = "none";
-    blueButton.style.border = "none";
-    randomButton.style.border = "3px solid black";
-    ownColorButton.style.border = "none";
+    borderChange(color);
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
+        //random numbers are created for the rgb values
         box.style.backgroundColor =
           "rgb(" +
           parseInt(Math.random() * 255) +
@@ -78,13 +67,10 @@ const colorChange = (color) => {
       });
     });
   } else if (color === "ownColor") {
-    redButton.style.border = "none";
-    greenButton.style.border = "none";
-    blueButton.style.border = "none";
-    randomButton.style.border = "none";
-    ownColorButton.style.border = "3px solid black";
+    borderChange(color);
     allMinibox.forEach((box) => {
       box.addEventListener("mouseover", () => {
+        //rgb values are those from the input areas of "own Color" section
         box.style.backgroundColor =
           "rgb(" +
           ownRed.value +
@@ -98,6 +84,7 @@ const colorChange = (color) => {
   }
 };
 
+/* start/reset button resets previous choices and asks for drawpad size*/
 const reset = () => {
   hideOwnColor();
   redButton.style.border = "none";
@@ -116,17 +103,40 @@ const reset = () => {
   boxCreator(choice);
 };
 
+/* hides or shows "own color" input areas*/
 const toggleOwnColor = () => {
   ownRed.classList.toggle("hide");
   ownBlue.classList.toggle("hide");
   ownGreen.classList.toggle("hide");
 };
+/* hides input areas when other colors are selected*/
 const hideOwnColor = () => {
   ownRed.classList.add("hide");
   ownBlue.classList.add("hide");
   ownGreen.classList.add("hide");
 };
 
+/* highlights the chosen color*/
+const borderChange = (color) => {
+  redButton.style.border = "none";
+  greenButton.style.border = "none";
+  blueButton.style.border = "none";
+  randomButton.style.border = "none";
+  ownColorButton.style.border = "none";
+  if (color === "red") {
+    redButton.style.border = "3px solid black";
+  } else if (color === "green") {
+    greenButton.style.border = "3px solid black";
+  } else if (color === "blue") {
+    blueButton.style.border = "3px solid black";
+  } else if (color === "random") {
+    randomButton.style.border = "3px solid black";
+  } else if (color === "ownColor") {
+    ownColorButton.style.border = "3px solid black";
+  }
+};
+
+/* different buttons and input areas from the HTML */
 const resetButton = document.querySelector("#reset");
 const redButton = document.querySelector("#red");
 const greenButton = document.querySelector("#green");
@@ -137,6 +147,7 @@ const ownRed = document.querySelector("#ownRed");
 const ownGreen = document.querySelector("#ownGreen");
 const ownBlue = document.querySelector("#ownBlue");
 
+/* event listeners for the different buttons/color choices*/
 resetButton.addEventListener("click", reset);
 redButton.addEventListener("click", colorChange.bind(null, "red"));
 greenButton.addEventListener("click", colorChange.bind(null, "green"));
